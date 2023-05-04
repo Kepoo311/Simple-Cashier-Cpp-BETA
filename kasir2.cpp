@@ -2,9 +2,9 @@
 #include <conio.h>
 #include <windows.h>
 using namespace std;
-int jumbar2[50];
-int hars[50];
-string nambel[4] = {"Terong","Toge","Tomat","Tuyul"};
+int jumbar2[50];//No Function Yet (Muak)
+int hars[50];//No Function Yet (Muak)
+string nambel[4] = {"Terong","Toge","Tomat","Tuyul"};//No Function Yet (Muak)
 int jumbar,harbar,tobar,hartol,bayar,kembalian;
     string nambar, bonus;
 int altol;
