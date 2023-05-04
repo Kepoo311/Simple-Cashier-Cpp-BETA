@@ -39,7 +39,7 @@ void allcount(){
         Sleep(10000);
         system("cls");
         cout<<"======================================\n";
-        cout<<"\t Topat Mart\n";
+        cout<<"\t Topat Mart --#KepoDes\n";
         cout<<"======================================\n";
         cout<<"Barang Dan Harga :\n";
         cout<<"Nama Terong, Harga : "<< harbar<<endl;
