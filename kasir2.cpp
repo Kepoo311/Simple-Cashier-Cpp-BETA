@@ -2,9 +2,9 @@
 #include <conio.h>
 #include <windows.h>
 using namespace std;
-int jumbar2[50];//No Function Yet (Muak)
-int hars[50];//No Function Yet (Muak)
-string nambel[4] = {"Terong","Toge","Tomat","Tuyul"};//No Function Yet (Muak)
+int jumbar2[7];
+int harbars[7];
+string nambel[7];
 int jumbar,harbar,tobar,hartol,bayar,kembalian;
     string nambar, bonus;
 int altol;
@@ -12,6 +12,7 @@ int aljum;
 int minim = 10;
 bool bonuss = false;
 string loop;
+int a = 0;
 
 void allcount(){
        do{
@@ -35,24 +36,33 @@ void allcount(){
             bonuss = false;
         }
 
-        cout <<"Struk Di Print Dalam 10 detik";
-        Sleep(10000);
+        cout <<"Struk Di Print Dalam 5 detik";
+        Sleep(5000);
         system("cls");
         cout<<"======================================\n";
-        cout<<"\t Topat Mart --#KepoDes\n";
+        cout<<"\t Topat Mart\n";
         cout<<"======================================\n";
-        cout<<"Barang Dan Harga :\n";
-        cout<<"Nama Terong, Harga : "<< harbar<<endl;
+        cout<<"Daftar Belanjaan Anda :\n";
+        for (int i = 1; i < a; ++i)
+        {
+            cout << i << ". " << "Nama : "<< nambel[i] << endl;
+            cout << " Harga : " << harbars[i] << endl;
+            cout << " Jumlah : " << jumbar2[i] << endl;
+        }
+        cout << "===========================================" << endl;
         cout<<"Total : "<<altol<<endl;
         cout<<"Uang : "<<bayar<<endl;
         cout<<"kembalian : "<<kembalian<<endl;
+        cout << "===========================================" << endl;
         if(bonuss == true)
         {
             cout<<"Bonus : Dapat Bonus"<<endl;
             system("pause");
+            cout << "===========================================" << endl;
         }else{
             cout<<"Bonus : Tidak Dapat Bonus"<< endl;
-            cout<<"Nambah Barang Lagi? [y/n] : ";
+            cout<<"Nambah Barang Lagi? [y/n] : " << endl;
+            cout << "===========================================" << endl;
             cin >> loop;
         }
     }while(loop == "n" | loop == "N");
@@ -86,40 +96,56 @@ int main()
 
     switch(kodebar)
     {
-    	case 2:
+    	case 1:
         cout<<"Nama Barang : Terong"<<endl;
         cout<<"Harga : Rp. 10.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
         cin >> jumbar;
         harbar = 10000;
         count(jumbar,harbar);
+        nambel[1] = "Terong";
+        harbars[1] = harbar;
+        jumbar2[1] = jumbar;
+        a += 1;
     	break;
 
-    	case 3:
+    	case 2:
         cout<<"Nama Barang : Toge"<<endl;
         cout<<"Harga : Rp. 1.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
     cin >> jumbar;
         harbar = 1000;
         count(jumbar,harbar);
+        nambel[2] = "Toge";
+        harbars[2] = harbar;
+        jumbar2[2] = jumbar;
+        a += 1;
     	break;
 
-    	case 4:
+    	case 3:
         cout<<"Nama Barang : Tomat"<<endl;
         cout<<"Harga : Rp. 11.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
     cin >> jumbar;
         harbar = 11000;
         count(jumbar,harbar);
+        nambel[3] = "Tomat";
+        harbars[3] = harbar;
+        jumbar2[3] = jumbar;
+        a += 1;
     	break;
 
-    	case 7:
+    	case 4:
         cout<<"Nama Barang : Tuyul"<<endl;
         cout<<"Harga : Rp. 19.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
     cin >> jumbar;
         harbar = 19000;
         count(jumbar,harbar);
+        nambel[4] = "Tuyul";
+        harbars[4] = harbar;
+        jumbar2[4] = jumbar;
+        a += 1;
     	break;
 
         case 0:
@@ -138,3 +164,4 @@ allcount();
     getch();
 	return 0;
 }
+
