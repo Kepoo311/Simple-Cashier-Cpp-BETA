@@ -3,7 +3,7 @@ Just Simple Cashier Program To Complete My School Task
 
 
 Thanks To:
-Allah Swt\n
+Allah Swt
 AI (not all code is made by ai)
 freinds
 And Myself
