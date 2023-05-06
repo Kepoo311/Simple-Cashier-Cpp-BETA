@@ -1,10 +1,8 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include <vector>
 using namespace std;
-int jumbar2[7];
-int harbars[7];
-string nambel[7];
 int jumbar,harbar,tobar,hartol,bayar,kembalian;
     string nambar, bonus;
 int altol;
@@ -12,7 +10,27 @@ int aljum;
 int minim = 10;
 bool bonuss = false;
 string loop;
-int a = 0;
+
+struct Item {
+    string name;
+    int price;
+    int quantity;
+};
+
+class MiniMarket {
+private:
+    vector<Item> cart;
+
+public:
+    void addItem(const string& name, int price, int quantity) {
+        cart.push_back({name, price, quantity});
+    }
+
+    const vector<Item>& getCart() const {
+        return cart;
+    }
+};
+    MiniMarket market;
 
 void allcount(){
        do{
@@ -42,13 +60,18 @@ void allcount(){
         cout<<"======================================\n";
         cout<<"\t Topat Mart\n";
         cout<<"======================================\n";
-        cout<<"Daftar Belanjaan Anda :\n";
-        for (int i = 1; i < a; ++i)
-        {
-            cout << i << ". " << "Nama : "<< nambel[i] << endl;
-            cout << " Harga : " << harbars[i] << endl;
-            cout << " Jumlah : " << jumbar2[i] << endl;
-        }
+        const vector<Item>& cart = market.getCart();
+            if (cart.empty()) {
+                cout << "Cart is empty." << endl;
+            } else {
+                cout << "Daftar Belanjaan Anda:\n";
+                for (const auto& item : cart) {
+                    cout << "Nama: " << item.name << endl;
+                    cout << "Harga: " << item.price << endl;
+                    cout << "Jumlah: " << item.quantity << endl;
+                    cout << "----------------------\n";
+                }
+            }
         cout << "===========================================" << endl;
         cout<<"Total : "<<altol<<endl;
         cout<<"Uang : "<<bayar<<endl;
@@ -76,10 +99,11 @@ void count(int jums, int harbars){
         aljum = aljum + jumbar;
         cout<<"Nambah Barang Lagi? [y/n] : ";
         cin >> loop;
+        if(loop == "n" | loop == "N"){
+            allcount();
+        }
     }while(loop == "n" | loop == "N");
 }
-
-
 
 
 int main()
@@ -102,50 +126,38 @@ int main()
         cout<<"Masukkan Jumlah Barang :";
         cin >> jumbar;
         harbar = 10000;
+        market.addItem("Terong", harbar, jumbar);
         count(jumbar,harbar);
-        nambel[1] = "Terong";
-        harbars[1] = harbar;
-        jumbar2[1] = jumbar;
-        a += 1;
     	break;
 
     	case 2:
         cout<<"Nama Barang : Toge"<<endl;
         cout<<"Harga : Rp. 1.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
-    cin >> jumbar;
+        cin >> jumbar;
         harbar = 1000;
+        market.addItem("Toge", harbar, jumbar);
         count(jumbar,harbar);
-        nambel[2] = "Toge";
-        harbars[2] = harbar;
-        jumbar2[2] = jumbar;
-        a += 1;
     	break;
 
     	case 3:
         cout<<"Nama Barang : Tomat"<<endl;
         cout<<"Harga : Rp. 11.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
-    cin >> jumbar;
+        cin >> jumbar;
         harbar = 11000;
+        market.addItem("Tomat", harbar, jumbar);
         count(jumbar,harbar);
-        nambel[3] = "Tomat";
-        harbars[3] = harbar;
-        jumbar2[3] = jumbar;
-        a += 1;
     	break;
 
     	case 4:
         cout<<"Nama Barang : Tuyul"<<endl;
         cout<<"Harga : Rp. 19.000"<<endl;
         cout<<"Masukkan Jumlah Barang :";
-    cin >> jumbar;
+        cin >> jumbar;
         harbar = 19000;
+        market.addItem("Tuyul", harbar, jumbar);
         count(jumbar,harbar);
-        nambel[4] = "Tuyul";
-        harbars[4] = harbar;
-        jumbar2[4] = jumbar;
-        a += 1;
     	break;
 
         case 0:
@@ -154,12 +166,15 @@ int main()
 
     	default:
     	cout<<"error Bro";
+        exit(EXIT_FAILURE);
+
 
     }
-
 }while(kodebar != 10);
 
+
 allcount();
+
 
     getch();
 	return 0;
